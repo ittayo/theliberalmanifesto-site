@@ -1,0 +1,170 @@
+/* The Liberal Manifesto — shared styles */
+
+:root {
+  --ink: #2a2420;
+  --ink-soft: #4a4038;
+  --gold: #9c7a3c;
+  --rule: rgba(42, 36, 32, 0.18);
+  --paper-a: #f4e9d5;
+  --paper-b: #e9d9b8;
+  --paper-c: #d9c49a;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: var(--ink);
+  font-family: "Frank Ruhl Libre", Georgia, "Times New Roman", serif;
+  line-height: 1.85;
+  min-height: 100vh;
+
+  /* Parchment background: layered radial gradients + subtle grain via SVG turbulence */
+  background-color: var(--paper-b);
+  background-image:
+    radial-gradient(ellipse at 15% 10%, rgba(255, 250, 235, 0.55) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 20%, var(--paper-a) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 85%, var(--paper-c) 0%, transparent 55%),
+    radial-gradient(ellipse at 10% 90%, rgba(200, 170, 120, 0.35) 0%, transparent 50%),
+    linear-gradient(180deg, var(--paper-a) 0%, var(--paper-b) 55%, var(--paper-c) 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+}
+
+body::before {
+  /* fine paper grain */
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0.55  0 0 0 0 0.47  0 0 0 0 0.35  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+body::after {
+  /* vignette toward the edges, like an aged page */
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 18vw rgba(90, 65, 30, 0.22);
+}
+
+.wrap {
+  position: relative;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 6rem 1.75rem 5rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 1.6rem;
+  letter-spacing: 0.01em;
+}
+
+.epigraph {
+  text-align: center;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  margin: 0 0 2.6rem;
+  padding-bottom: 2.4rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.principles {
+  margin: 0 0 2.6rem;
+  padding: 0;
+}
+
+.principles p {
+  font-weight: 700;
+  font-size: 1.14rem;
+  margin: 0 0 1.5rem;
+}
+
+.closing {
+  text-align: center;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  margin: 2.8rem 0 0;
+  padding-top: 2.4rem;
+  border-top: 1px solid var(--rule);
+}
+
+.lang-switch {
+  position: fixed;
+  top: 1.25rem;
+  inset-inline-end: 1.5rem;
+  font-size: 0.85rem;
+  z-index: 5;
+}
+
+.lang-switch a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  font-weight: 700;
+}
+
+.lang-switch a:hover {
+  border-bottom-color: var(--gold);
+}
+
+/* Hebrew page */
+html[lang="he"] body {
+  direction: rtl;
+}
+
+html[lang="he"] .title {
+  font-size: 2.7rem;
+}
+
+/* Landing / chooser page */
+.chooser {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  text-align: center;
+}
+
+.chooser h1 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--ink-soft);
+  margin: 0 0 0.4rem;
+}
+
+.chooser .links {
+  display: flex;
+  gap: 2rem;
+}
+
+.chooser a {
+  font-size: 1.3rem;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 0.15rem;
+}
+
+@media (max-width: 600px) {
+  .wrap { padding: 4rem 1.25rem 3.5rem; }
+  .title { font-size: 2rem; }
+  .principles p { font-size: 1.05rem; }
+}
