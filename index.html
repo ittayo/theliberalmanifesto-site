@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Liberal Manifesto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script>
+  // Auto-route by browser language: Hebrew-speaking visitors -> /he, everyone else -> /en.
+  // Runs before paint-visible content so there's no flash; falls back to the links below if JS is off.
+  (function () {
+    var langs = (navigator.languages || [navigator.language || navigator.userLanguage || ""]).join(",").toLowerCase();
+    var target = /he\b|iw\b/.test(langs) ? "he/" : "en/";
+    window.location.replace(target);
+  })();
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=en/"></noscript>
+</head>
+<body>
+  <main class="chooser">
+    <h1>The Liberal Manifesto &nbsp;/&nbsp; המניפסט הליברלי</h1>
+    <div class="links">
+      <a href="en/">English</a>
+      <a href="he/">עברית</a>
+    </div>
+  </main>
+</body>
+</html>
