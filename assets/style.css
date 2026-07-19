@@ -64,19 +64,22 @@ body::after {
 }
 
 .title {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-family: "Bellefair", Georgia, serif;
+  font-weight: 400;
+  font-size: 4rem;
   text-align: center;
   margin: 0 0 1.6rem;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
 }
 
 .epigraph {
+  font-family: "Bellefair", Georgia, serif;
   text-align: center;
-  font-style: italic;
-  font-weight: 700;
+  font-style: normal;
+  font-weight: 400;
   color: var(--ink-soft);
-  font-size: 1.05rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.01em;
   margin: 0 0 2.6rem;
   padding-bottom: 2.4rem;
   border-bottom: 1px solid var(--rule);
@@ -88,17 +91,30 @@ body::after {
 }
 
 .principles p {
-  font-weight: 700;
   font-size: 1.14rem;
   margin: 0 0 1.5rem;
 }
 
-.closing {
-  text-align: center;
-  font-style: italic;
-  font-weight: 700;
+.principles p .lead {
+  font-family: "Bellefair", Georgia, serif;
+  font-weight: 300;
+  font-size: 1.6rem;
   color: var(--ink-soft);
-  font-size: 1.05rem;
+}
+
+.principles p .rest {
+  font-weight: 900;
+  color: var(--ink);
+}
+
+.closing {
+  font-family: "Bellefair", Georgia, serif;
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--ink-soft);
+  font-size: 1.4rem;
+  letter-spacing: 0.01em;
   margin: 2.8rem 0 0;
   padding-top: 2.4rem;
   border-top: 1px solid var(--rule);
@@ -126,10 +142,6 @@ body::after {
 /* Hebrew page */
 html[lang="he"] body {
   direction: rtl;
-}
-
-html[lang="he"] .title {
-  font-size: 2.7rem;
 }
 
 /* Landing / chooser page */
