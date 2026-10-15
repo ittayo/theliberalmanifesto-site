@@ -1,10 +1,11 @@
 # The Liberal Manifesto — site
 
-Static, no build step, no framework. Three pages:
+Static, no build step, no framework. Four pages:
 
-- `index.html` — auto-redirects to `/he/` or `/en/` based on the visitor's browser language (falls back to a manual chooser if JS is off).
+- `index.html` — auto-redirects to `/he/`, `/ar/` or `/en/` based on the visitor's browser language (falls back to a manual chooser if JS is off).
 - `en/index.html` — English version.
 - `he/index.html` — Hebrew version, RTL.
+- `ar/index.html` — Arabic version, RTL (uses Amiri, since Bellefair/Frank Ruhl Libre have no Arabic).
 - `assets/style.css` — shared styling.
 
 ## Font note

@@ -9,11 +9,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 <script>
-  // Auto-route by browser language: Hebrew-speaking visitors -> /he, everyone else -> /en.
-  // Runs before paint-visible content so there's no flash; falls back to the links below if JS is off.
+  // Auto-route by browser language: the visitor's first matching preference wins
+  // (Hebrew -> /he, Arabic -> /ar, English or anything else -> /en).
+  // Falls back to the links below if JS is off.
   (function () {
-    var langs = (navigator.languages || [navigator.language || navigator.userLanguage || ""]).join(",").toLowerCase();
-    var target = /he\b|iw\b/.test(langs) ? "he/" : "en/";
+    var prefs = navigator.languages || [navigator.language || navigator.userLanguage || ""];
+    var target = "en/";
+    for (var i = 0; i < prefs.length; i++) {
+      var code = String(prefs[i]).toLowerCase().split("-")[0];
+      if (code === "he" || code === "iw") { target = "he/"; break; }
+      if (code === "ar") { target = "ar/"; break; }
+      if (code === "en") { target = "en/"; break; }
+    }
     window.location.replace(target);
   })();
 </script>
@@ -21,10 +28,11 @@
 </head>
 <body>
   <main class="chooser">
-    <h1>The Liberal Manifesto &nbsp;/&nbsp; המניפסט הליברלי</h1>
+    <h1>The Liberal Manifesto &nbsp;/&nbsp; המניפסט הליברלי &nbsp;/&nbsp; البيان الليبرالي</h1>
     <div class="links">
       <a href="en/">English</a>
       <a href="he/">עברית</a>
+      <a href="ar/">العربية</a>
     </div>
   </main>
 </body>
