@@ -5,7 +5,7 @@ Static, no build step, no framework. Four pages:
 - `index.html` — auto-redirects to `/he/`, `/ar/` or `/en/` based on the visitor's browser language (falls back to a manual chooser if JS is off).
 - `en/index.html` — English version.
 - `he/index.html` — Hebrew version, RTL.
-- `ar/index.html` — Arabic version, RTL (uses Amiri, since Bellefair/Frank Ruhl Libre have no Arabic).
+- `ar/index.html` — Arabic version, RTL (Amiri for the text and Noto Kufi Arabic Light for the lead-ins, since Bellefair/Frank Ruhl Libre have no Arabic).
 - `assets/style.css` — shared styling.
 
 ## Font note

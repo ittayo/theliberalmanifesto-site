@@ -17,6 +17,11 @@ html, body {
   padding: 0;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   color: var(--ink);
   font-family: "Frank Ruhl Libre", Georgia, "Times New Roman", serif;
@@ -210,9 +215,11 @@ html[lang="ar"] .principles p {
   font-size: 1.3rem;
 }
 
+/* Lead-in: light geometric Kufi, the Arabic counterpart of Bellefair's role */
 html[lang="ar"] .principles p .lead {
-  font-weight: 400;
-  font-size: 1.7rem;
+  font-family: "Noto Kufi Arabic", "Amiri", Georgia, serif;
+  font-weight: 300;
+  font-size: 1.5rem;
 }
 
 html[lang="ar"] .principles p .rest {
@@ -251,10 +258,18 @@ html[lang="ar"] .principles p .rest {
 }
 
 @media (max-width: 600px) {
-  .wrap { padding: 4rem 1.25rem 3.5rem; }
-  .title { font-size: 2rem; }
-  .principles p { font-size: 1.05rem; }
-  html[lang="ar"] .title { font-size: 2.4rem; }
-  html[lang="ar"] .principles p { font-size: 1.15rem; }
-  html[lang="ar"] .principles p .lead { font-size: 1.45rem; }
+  .wrap { padding: 3.6rem 1.1rem 3rem; }
+  .title { font-size: 2rem; margin-bottom: 1.2rem; }
+  .epigraph,
+  .closing { font-size: 1.1rem; line-height: 1.6; }
+  .epigraph { margin-bottom: 2rem; padding-bottom: 1.8rem; }
+  .closing { margin-top: 2rem; padding-top: 1.8rem; }
+  .principles p { font-size: 0.98rem; line-height: 1.7; margin-bottom: 1.2rem; }
+  .principles p .lead { font-size: 1.3rem; line-height: 1.4; }
+
+  html[lang="ar"] .title { font-size: 2.2rem; }
+  html[lang="ar"] .epigraph,
+  html[lang="ar"] .closing { font-size: 1.2rem; }
+  html[lang="ar"] .principles p { font-size: 1.08rem; line-height: 1.9; }
+  html[lang="ar"] .principles p .lead { font-size: 1.25rem; line-height: 1.6; }
 }
