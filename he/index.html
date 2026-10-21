@@ -3,32 +3,541 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>המניפסט הליברלי</title>
-<meta name="description" content="המניפסט הליברלי — הצהרת עקרונות של קהילה, סובלנות ואמת.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
+<title>איתי אופיר</title>
+<meta name="description" content="האתר האישי של איתי אופיר">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CjxjaXJjbGUgY3g9IjMyIiBjeT0iMzIiIHI9IjMxIiBmaWxsPSIjZjZmMWU3IiBzdHJva2U9IiMyMDFkMTkiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSIzMiIgeT0iNDIiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCAnTmV3c3JlYWRlcicsIHNlcmlmIiBmb250LXNpemU9IjI2IiBmb250LXdlaWdodD0iNjAwIiBmb250LXN0eWxlPSJpdGFsaWMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMyMDFkMTkiPklPPC90ZXh0Pgo8L3N2Zz4K">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:ital,wght@0,400;0,500;0,600;1,400&family=Assistant:wght@400;500;600&display=swap');
+
+  :root {
+    --paper: #f6f1e7;
+    --paper-raised: #efe8d9;
+    --ink: #201d19;
+    --ink-soft: #5c564c;
+    --ink-faint: #6c6554;
+    --accent: #a8651f;
+    --accent-ink: #7a4a17;
+    --teal: #2f5f58;
+    --teal-ink: #1e3f3a;
+    --rule: #ddd2bd;
+    --card: #fffdf8;
+    --shadow: rgba(32, 29, 25, 0.08);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #17140f;
+      --paper-raised: #1e1a14;
+      --ink: #ece5d6;
+      --ink-soft: #b5ac9a;
+      --ink-faint: #948a76;
+      --accent: #dd9a4e;
+      --accent-ink: #eeb877;
+      --teal: #6bab9f;
+      --teal-ink: #8fc2b7;
+      --rule: #38321f;
+      --card: #1e1a14;
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #17140f;
+    --paper-raised: #1e1a14;
+    --ink: #ece5d6;
+    --ink-soft: #b5ac9a;
+    --ink-faint: #948a76;
+    --accent: #dd9a4e;
+    --accent-ink: #eeb877;
+    --teal: #6bab9f;
+    --teal-ink: #8fc2b7;
+    --rule: #38321f;
+    --card: #1e1a14;
+    --shadow: rgba(0, 0, 0, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Assistant', ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    direction: rtl;
+  }
+
+  .banner-photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1004 / 488;
+    max-height: 440px;
+    object-fit: cover;
+    object-position: center 35%;
+    margin-top: 49px;
+  }
+
+  .site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+  }
+  .site-nav .nav-inner {
+    max-width: 1120px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 13px 24px;
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .site-nav .nav-inner::-webkit-scrollbar { display: none; }
+  .site-nav a {
+    font-family: 'Assistant', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--ink-soft);
+    flex: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+  }
+  .site-nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .site-nav a.active { color: var(--accent-ink); border-bottom-color: var(--accent-ink); font-weight: 600; }
+  .site-nav a.lang-switch { margin-inline-start: auto; color: var(--ink-faint); }
+
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Frank Ruhl Libre', Georgia, serif;
+    font-weight: 500;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .eyebrow {
+    font-family: 'Assistant', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  a { color: var(--accent-ink); }
+  a:hover { color: var(--accent); }
+
+  /* ---- Hero ---- */
+  header.hero {
+    padding: 88px 0 56px;
+    border-bottom: 1px solid var(--rule);
+  }
+  header.hero .eyebrow { margin-bottom: 18px; }
+  header.hero h1 {
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    font-style: italic;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  header.hero .role {
+    margin-top: 18px;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+  header.hero .role strong { color: var(--ink); font-weight: 600; }
+
+  section { padding: 64px 0; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: none; }
+  section > .eyebrow { margin-bottom: 10px; }
+  section > h2 {
+    font-size: 1.9rem;
+    margin-bottom: 22px;
+  }
+  section > p.lede {
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: -8px 0 30px;
+  }
+
+  /* ---- About ---- */
+  #about p { max-width: 64ch; margin: 0 0 16px; }
+  #about p:last-child { margin-bottom: 0; }
+
+  /* ---- Books ---- */
+  .books {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 20px;
+  }
+  .book {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    box-shadow: 0 1px 2px var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+    overflow: hidden;
+  }
+  .book .cover-title { padding: 18px 20px 12px; font-size: 1.05rem; font-style: italic; line-height: 1.3; }
+  .book .cover { width: 100%; display: block; cursor: zoom-in; }
+  .book .buy {
+    font-family: 'Assistant', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: var(--accent-ink);
+    border-bottom: 1px dashed var(--accent);
+    align-self: flex-start;
+    margin: 16px 20px 20px;
+  }
+
+  /* ---- Manifesto banner ---- */
+  #manifesto {
+    background: var(--paper-raised);
+    border-radius: 4px;
+    padding: 44px 40px;
+    border-bottom: none;
+    margin: 40px 0;
+  }
+  #manifesto .eyebrow { color: var(--teal-ink); }
+  #manifesto h2 { color: var(--teal-ink); }
+  #manifesto p.lede { color: var(--ink-soft); }
+  #manifesto a.go {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: 'Assistant', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.88rem;
+    text-decoration: none;
+    color: var(--teal-ink);
+    border: 1px solid var(--teal);
+    padding: 9px 16px;
+    border-radius: 3px;
+  }
+  #manifesto a.go:hover { background: var(--teal); color: var(--paper); }
+
+  /* ---- Writing list ---- */
+  .writing-list { display: flex; flex-direction: column; }
+  .writing-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 16px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .writing-item:last-child { border-bottom: 1px solid var(--rule); }
+  .writing-item .title { font-weight: 500; unicode-bidi: isolate; }
+  .writing-item .tag {
+    font-family: 'Assistant', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+    white-space: normal;
+    text-align: left;
+    max-width: 46%;
+    padding-top: 2px;
+  }
+
+  /* ---- Social icons ---- */
+  .social-row { display: flex; gap: 14px; padding-top: 6px; }
+  .social-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .social-icon svg { width: 19px; height: 19px; }
+  .social-icon:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--paper);
+  }
+  .social-icon::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Assistant', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    padding: 5px 9px;
+    border-radius: 3px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  .social-icon:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* ---- Flea market ---- */
+  .flea-list p { margin: 0 0 10px; }
+  .flea-list .tag {
+    font-family: 'Assistant', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+  }
+  .flea-list ul {
+    margin: 0 0 10px;
+    padding-inline-start: 1.3em;
+  }
+  .flea-list li { margin: 4px 0; }
+
+  /* ---- Quotes ---- */
+  .quote {
+    font-family: 'Frank Ruhl Libre', Georgia, serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    color: var(--ink);
+    border-right: 3px solid var(--accent);
+    padding-right: 22px;
+    margin: 0 0 30px;
+  }
+  .quote:last-child { margin-bottom: 0; }
+  .quote .src {
+    display: block;
+    margin-top: 8px;
+    font-family: 'Frank Ruhl Libre', Georgia, serif;
+    font-style: italic;
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+  }
+  .quote .src::before { content: "— "; }
+
+  footer {
+    padding: 40px 0 80px;
+    font-family: 'Assistant', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  @media (max-width: 480px) {
+    header.hero { padding: 60px 0 40px; }
+    #manifesto { padding: 32px 22px; }
+    .writing-item { flex-direction: column; gap: 4px; }
+    .writing-item .tag { text-align: right; max-width: 100%; }
+  }
+</style>
 </head>
 <body>
-<nav class="lang-switch"><a href="../en/">en</a><a href="../ar/" hreflang="ar" lang="ar">العربية</a></nav>
-<a class="byline" href="https://ittayophir.com/he/" rel="author" title="Ittay Ophir" aria-label="Ittay Ophir"><img src="../assets/io.svg" alt="" width="28" height="28"></a>
-<main class="wrap">
-  <h1 class="title">המניפסט הליברלי</h1>
-  <p class="epigraph">&laquo;סובלנות בלתי מוגבלת מובילה בהכרח למות הסובלנות&raquo;<br>— קארל פופר, 1945</p>
-
-  <div class="principles">
-    <p><span class="lead">אנו מאמינים בקהילה.</span><span class="rest"> לא בלאום, או בשבט, או במפלגה - אלא בשכונה של אנשים שמסכימים לחיות יחדיו בחוקים משותפים של הגינות.</span></p>
-    <p><span class="lead">אנו עוסקים בעובדות.</span><span class="rest"> לא כיוון שהצדק עימנו, אלא מכיוון שאנו מוכנים להודות בטעות. ברגע שתחדל לפקפק - אינך חלק מהקהילה.</span></p>
-    <p><span class="lead">אנו סובלנים לכל מלבד השמדת הסובלנות עצמה</span><span class="rest">. זוהי איננה סתירה. זו הדרך היחידה בה הסובלנות שורדת.</span></p>
-    <p><span class="lead">אנו מתדיינים עם אלו שמדברים ביושרה</span><span class="rest">. אין אנו מדברים עם שקרנים. משא ומתן עם נוכלים אינה קבלת האחר - היא מספקת לאויבינו כוח להשמידנו.</span></p>
-    <p><span class="lead">אם תחלוק על דעתינו - נשקול את דעתך</span><span class="rest">. תרמה אותנו, תרדה בנו, תשחית את מוסדותינו - ותאבד את מקומך בשולחן הדיונים. הדלת פתוחה. המושב מחייב.</span></p>
-    <p><span class="lead">איננו מקדמים אלימות</span><span class="rest">. איננו מפארים אותה. אך אנו לא מבלבלים אי-אלימות עם כניעה. לא מכניסים אויבים הביתה. אלו פניו של הצדק.</span></p>
-    <p><span class="lead">אנו שואפים לכח כדי להגן על הקהילה. לא בכדי לשמרו כרכושינו הפרטי</span><span class="rest">. ברגע שנשתמש בכח כדי להשתיק במקום להגן - אנו הופכים לאויבינו.</span></p>
-    <p><span class="lead">אנו שומרים על זכותך להיות שונה</span><span class="rest"> - באמונה, זהות, השקפה וערכים. הקהילה אינה דורשת נאמנות. היא דורשת רק דבר אחד: חיה ותן לחיות.</span></p>
+<div id="top"></div>
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="#top">בית</a>
+    <a href="#about">אודות</a>
+    <a href="#books">ספרים</a>
+    <a href="#manifesto">המניפסט הליברלי</a>
+    <a href="#writing">מאמרים ופרקים</a>
+    <a href="#quotes">ציטוטים</a>
+    <a href="#reading">מה שקראתי</a>
+    <a href="#contact">יצירת קשר</a>
+    <a class="lang-switch" href="../">English</a>
   </div>
+</nav>
+<img class="banner-photo" src="../banner.jpg" alt="Ittay Ophir and his dog">
 
-  <p class="closing">&laquo;ואהבת לרעך כמוך. אני אדוני&raquo;<br>— ויקרא, פרק י"ט, פסוק י"ח</p>
-</main>
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">איתי אופיר</div>
+    <h1>פותר בעיות, במקצוע ובטמפרמנט.</h1>
+    <p class="role">שלושים וחמש שנה בכתיבת תוכנה — <strong>סקאנווק, רטליקס/NCR, מיקרוסופט, טאביט</strong> — ולצידן, ספרים, מאמרים וסאטירה. כאן אני שומר את הכול.</p>
+  </header>
+
+  <section id="about">
+    <div class="eyebrow">אודות</div>
+    <h2>הגרסה הקצרה</h2>
+    <p>ביליתי את הקריירה שלי בפתרון בעיות בקוד — הוכשרתי בתחילת הדרך ב-Visual Basic ו-Delphi, ומאוחר יותר הודרכתי ישירות על ידי רוברט "Uncle Bob" מרטין בעקרונות Clean Code ו-SOLID, ואני עדיין רואה את עצמי בראש ובראשונה כפותר בעיות, ורק אחר כך כמהנדס תוכנה. ההרגל הזה לא נשאר בתוך סביבת הפיתוח.</p>
+    <p>מחוץ לעבודה אני כותב — כתב-עט פילוסופי תחת שמי האמיתי, רומן רומנטי תחת שם העט <strong>Katie A. Novak</strong>, מאמרים במדיום, ואת <em>המניפסט הליברלי</em>. האתר הזה הוא המקום בו רציתי לשמור את כל זה כבר הרבה זמן. הוא טיוטה ראשונה. כדי שתגיבו עליו ותתקנו אותו, ולא כיצירה מוגמרת.</p>
+  </section>
+
+  <section id="books">
+    <div class="eyebrow">ספרים שפורסמו</div>
+    <h2>על המדף</h2>
+    <div class="books">
+      <div class="book">
+        <h3 class="cover-title">The Adventures of an Unsuspecting Buddha</h3>
+        <a href="../covers/adventures-buddha.jpg" target="_blank" rel="noopener" aria-label="פתיחת עטיפת הספר בכרטיסייה חדשה"><img class="cover" src="../covers/adventures-buddha.jpg" alt="עטיפת הספר The Adventures of an Unsuspecting Buddha" /></a>
+        <a class="buy" href="https://a.co/d/0b0OC7db" target="_blank" rel="noopener">לרכישה באמזון &larr;</a>
+      </div>
+      <div class="book">
+        <h3 class="cover-title">Corporate Crowns</h3>
+        <a href="../covers/corporate-crowns.jpg" target="_blank" rel="noopener" aria-label="פתיחת עטיפת הספר בכרטיסייה חדשה"><img class="cover" src="../covers/corporate-crowns.jpg" alt="עטיפת הספר Corporate Crowns" /></a>
+        <a class="buy" href="https://a.co/d/0ff0vfkL" target="_blank" rel="noopener">לרכישה באמזון &larr;</a>
+      </div>
+      <div class="book">
+        <h3 class="cover-title">I Human</h3>
+        <a href="../covers/i-human.jpg" target="_blank" rel="noopener" aria-label="פתיחת עטיפת הספר בכרטיסייה חדשה"><img class="cover" src="../covers/i-human.jpg" alt="עטיפת הספר I Human" /></a>
+        <a class="buy" href="https://a.co/d/02p2UAIE" target="_blank" rel="noopener">לרכישה באמזון &larr;</a>
+      </div>
+      <div class="book">
+        <h3 class="cover-title">מחשבות קטנות</h3>
+        <a href="../covers/small-thoughts.jpg" target="_blank" rel="noopener" aria-label="פתיחת עטיפת הספר בכרטיסייה חדשה"><img class="cover" src="../covers/small-thoughts.jpg" alt="עטיפת הספר מחשבות קטנות" /></a>
+        <a class="buy" href="https://a.co/d/0h0Bg31P" target="_blank" rel="noopener">לרכישה באמזון &larr;</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="manifesto">
+    <div class="eyebrow">הצהרה</div>
+    <h2>המניפסט הליברלי</h2>
+    <p class="lede">אחד הדברים הרציניים היחידים שפרסמתי אי פעם. מבוסס על פרדוקס הסובלנות של פופר — "סובלנות בלתי מוגבלת מובילה בהכרח למות הסובלנות" — הוא מציג עקרונות של קהילה על פני שבטיות, מחויבות לעובדות, סובלנות אמיתית, דיאלוג בתום לב, וחירות הפרט ללא אפליה. עמוד עצמאי, בעברית ובאנגלית.</p>
+    <a class="go" href="https://theliberalmanifesto.co.il/he/" target="_blank" rel="noopener">לקריאת המניפסט הליברלי &larr;</a>
+  </section>
+
+  <section id="writing">
+    <div class="eyebrow">מאמרים וקטעים</div>
+    <h2>פרקים, פוסטים ומאמרי מדיום</h2>
+    <p class="lede">עוד בדרך, בעיקר קטעים בעברית שאין להם במה אחרת.</p>
+    <div class="writing-list">
+      <div class="writing-item">
+        <a class="title" href="https://medium.com/@ittay.ophir" target="_blank" rel="noopener">מאמרים במדיום</a>
+        <span class="tag">medium.com/@ittay.ophir</span>
+      </div>
+      <div class="writing-item">
+        <a class="title" href="https://medium.com/@ittay.ophir/where-did-the-jews-come-from-aee821bdaa6a" target="_blank" rel="noopener">Where Did the Jews Come From? — פרק 24 מתוך <em>I Human</em></a>
+        <span class="tag">פרק מלא</span>
+      </div>
+      <div class="writing-item">
+        <a class="title" href="content/">עוד פרקים ומאמרים</a>
+        <span class="tag">באתר הזה</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="quotes">
+    <div class="eyebrow">במילים שלכם</div>
+    <h2>ציטוטים</h2>
+    <blockquote class="quote">האמת מוזרה יותר מהספרות, אבל זה מפני שהספרות מחויבת להיצמד למה שאפשרי; האמת לא.<span class="src"><a href="https://he.wikipedia.org/wiki/מארק_טוויין" target="_blank" rel="noopener">מארק טוויין</a></span></blockquote>
+    <blockquote class="quote">כל מה שאנחנו שומעים הוא דעה, לא עובדה. כל מה שאנחנו רואים הוא נקודת מבט, לא האמת.<span class="src"><a href="https://he.wikipedia.org/wiki/מרקוס_אורליוס" target="_blank" rel="noopener">מרקוס אורליוס</a></span></blockquote>
+    <blockquote class="quote">לעולם אל תתווכחו עם טיפשים. הם יגררו אתכם לרמתם, ויביסו אתכם עם ניסיון.<span class="src"><a href="https://he.wikipedia.org/wiki/מארק_טוויין" target="_blank" rel="noopener">מארק טוויין</a> (מיוחס)</span></blockquote>
+    <blockquote class="quote">אין עובדות, רק פרשנויות.<span class="src"><a href="https://he.wikipedia.org/wiki/פרידריך_ניטשה" target="_blank" rel="noopener">פרידריך ניטשה</a></span></blockquote>
+    <blockquote class="quote">אנחנו חיים בעידן שבו דברים מיותרים הם צרכינו היחידים.<span class="src"><a href="https://he.wikipedia.org/wiki/אוסקר_ויילד" target="_blank" rel="noopener">אוסקר ויילד</a></span></blockquote>
+    <blockquote class="quote">דבר אינו בהכרח נכון רק בגלל שאדם מת למענו.<span class="src"><a href="https://he.wikipedia.org/wiki/אוסקר_ויילד" target="_blank" rel="noopener">אוסקר ויילד</a></span></blockquote>
+    <blockquote class="quote">עובדות לא חדלות להתקיים רק מפני שהתעלמו מהן.<span class="src"><a href="https://he.wikipedia.org/wiki/אלדוס_הקסלי" target="_blank" rel="noopener">אלדוס הקסלי</a></span></blockquote>
+    <blockquote class="quote">כשאינך מתבונן, חייך חסרי משמעות.<span class="src"><a href="https://he.wikipedia.org/wiki/סוקרטס" target="_blank" rel="noopener">סוקרטס</a></span></blockquote>
+    <blockquote class="quote">הדרך הטובה ביותר לגלות אם אתם יכולים לסמוך על מישהו, היא לסמוך עליו.<span class="src"><a href="https://he.wikipedia.org/wiki/ארנסט_המינגוויי" target="_blank" rel="noopener">ארנסט המינגוויי</a> (מיוחס)</span></blockquote>
+    <blockquote class="quote">יש שלושה סוגים של שקרים — שקרים, שקרים נתעבים, וסטטיסטיקה.<span class="src"><a href="https://he.wikipedia.org/wiki/בנימין_דיזראלי" target="_blank" rel="noopener">בנימין דיזראלי</a></span></blockquote>
+    <blockquote class="quote">אם אתם רוצים לספר לאנשים את האמת, גרמו להם לצחוק, אחרת הם יהרגו אתכם.<span class="src"><a href="https://he.wikipedia.org/wiki/%D7%92%27%D7%95%D7%A8%D7%92%27_%D7%91%D7%A8%D7%A0%D7%A8%D7%93_%D7%A9%D7%95" target="_blank" rel="noopener">ג'ורג' ברנרד שו</a></span></blockquote>
+    <blockquote class="quote">אפשר להניח בבטחה שבראתם את אלוהים בדמותכם, כשמתברר שאלוהים שונא בדיוק את אותם אנשים שאתם שונאים.<span class="src"><a href="https://he.wikipedia.org/wiki/%D7%90%D7%9F_%D7%9C%D7%9E%D7%95%D7%98" target="_blank" rel="noopener">אן למוט</a></span></blockquote>
+    <blockquote class="quote">רק בגלל שאתם לא מבינים משהו, לא אומר שהוא לא נכון.<span class="src"><a href="https://en.wikipedia.org/wiki/Lemony_Snicket" target="_blank" rel="noopener">למוני סניקט</a></span></blockquote>
+    <blockquote class="quote">מלקולם: אלוהים בורא את הדינוזאורים. אלוהים משמיד את  הדינוזאורים. אלוהים בורא את האדם. האדם משמיד את אלוהים. האדם בורא את הדינוזאורים.<br>אלי: הדינוזאורים אוכלים את האדם. האישה יורשת את הארץ.<span class="src"><a href="https://he.wikipedia.org/wiki/פארק_היורה_(סרט)" target="_blank" rel="noopener">פארק היורה</a></span></blockquote>
+    <blockquote class="quote">כל בעלי החיים שווים, אך חלקם שווים יותר.<span class="src">נפוליאון, <a href="https://he.wikipedia.org/wiki/חוות_החיות" target="_blank" rel="noopener">חוות החיות</a> (ג'ורג' אורוול)</span></blockquote>
+    <blockquote class="quote">אט אט מתברר לי שכל פילוסופיה רצינית היא למעשה וידוי של כותבה, וסוג של יומן זיכרון שהוא מפרסם באופן לא מודע.<span class="src"><a href="https://a.co/d/0b0OC7db" target="_blank" rel="noopener">פרידריך ניטשה</a></span></blockquote>
+    <blockquote class="quote">הדבר הראשון שעושים כשנתקלים בבעיה, הוא לתקן אותה.<span class="src"><a href="https://ittayophir.com/he/" target="_blank" rel="noopener">איתי אופיר</a></span></blockquote>
+  </section>
+
+  <section id="reading">
+    <div class="eyebrow">מומלצים</div>
+    <h2>ספרים שאהבתי</h2>
+    <p class="lede">רשימה מתעדכנת.</p>
+    <div class="writing-list">
+      <div class="writing-item">
+        <a class="title" href="https://a.co/d/01u77SZB" target="_blank" rel="noopener">טאו טה צ'ינג</a>
+        <span class="tag">לאו דזה</span>
+      </div>
+      <div class="writing-item">
+        <a class="title" dir="ltr" href="https://a.co/d/02PpWRIy" target="_blank" rel="noopener">Guards! Guards!</a>
+        <span class="tag">טרי פראצ'ט</span>
+      </div>
+      <div class="writing-item">
+        <a class="title" href="https://a.co/d/04gsAvmt" target="_blank" rel="noopener">Thief of Time</a>
+        <span class="tag">טרי פראצ'ט</span>
+      </div>
+      <div class="writing-item">
+        <a class="title" href="https://a.co/d/0eaKdZMX" target="_blank" rel="noopener">הקוסם מארץ עוץ</a>
+        <span class="tag">ל. פרנק באום</span>
+      </div>
+      <div class="writing-item">
+        <a class="title" href="https://a.co/d/0alj5cK0" target="_blank" rel="noopener">The Unhoneymooners</a>
+        <span class="tag">כריסטינה לורן</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="fleamarket">
+    <div class="eyebrow">שונות</div>
+    <h2>שוק פשפשים</h2>
+    <p class="lede">פריטים שונים ומשונים, פרי שיתוף פעולה עם בני אדם אחרים.</p>
+    <div class="flea-list">
+      <p><a href="https://canva.link/phxwkxeof6o8ewt" target="_blank" rel="noopener">קטלוג הכלבים של ארמון בארקינגהאם</a> <span class="tag">(מצגת Canva בעברית)</span></p>
+      <p>פלייליסטים שלי ב-YouTube Music <span class="tag">(עברית + אנגלית)</span>:</p>
+      <ul>
+        <li><a href="https://music.youtube.com/playlist?list=PLwOIMF3orpDzMAhDa-a4dhKZCceahENJi" target="_blank" rel="noopener">Dog Park Party</a></li>
+        <li><a href="https://music.youtube.com/playlist?list=PLwOIMF3orpDy4jBjGY2tISHKeXq8Mb1Pc" target="_blank" rel="noopener">Chill Too</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="eyebrow">יצירת קשר</div>
+    <h2>אמרו שלום</h2>
+    <p class="lede">בחרו את המתאים לכם — בפרטי, או בגלוי.</p>
+    <div class="social-row">
+      <a class="social-icon" href="https://www.facebook.com/Ittay.Ophir" target="_blank" rel="noopener" aria-label="פייסבוק" data-tooltip="פייסבוק">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+      </a>
+      <a class="social-icon" href="https://medium.com/@ittay.ophir/say-hello-acb9f20d6b07" target="_blank" rel="noopener" aria-label="מדיום" data-tooltip="מדיום">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.51-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.57-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+      </a>
+      <a class="social-icon" href="https://www.linkedin.com/in/ittay-ophir/" target="_blank" rel="noopener" aria-label="לינקדאין" data-tooltip="לינקדאין">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667h-3.554V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span>איתי אופיר — טיוטה v0.1, בנויה כדי שיתווכחו איתה</span>
+    <span>גבעתיים, ישראל</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.site-nav a[href^="#"]'));
+  if (!navLinks.length) return;
+
+  function setActive(id) {
+    navLinks.forEach(function (a) {
+      var linkId = a.getAttribute('href').replace('#', '');
+      a.classList.toggle('active', linkId === id);
+    });
+  }
+
+  navLinks.forEach(function (a) {
+    a.addEventListener('click', function () {
+      setActive(a.getAttribute('href').replace('#', ''));
+    });
+  });
+
+  var initialId = (window.location.hash || '#top').replace('#', '');
+  setActive(initialId);
+})();
+</script>
 </body>
 </html>

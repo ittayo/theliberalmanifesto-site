@@ -7,6 +7,7 @@ Static, no build step, no framework. Four pages:
 - `he/index.html` — Hebrew version, RTL.
 - `ar/index.html` — Arabic version, RTL (Amiri for the text and Noto Kufi Arabic Light for the lead-ins, since Bellefair/Frank Ruhl Libre have no Arabic).
 - `assets/style.css` — shared styling.
+- `pdf/` — downloadable one-page A4 PDFs per language (parchment, and a plain `-print` version). Linked from each page. Regenerate them if the text changes.
 
 ## Font note
 

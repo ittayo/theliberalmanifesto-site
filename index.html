@@ -3,37 +3,585 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Liberal Manifesto</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
-<script>
-  // Auto-route by browser language: the visitor's first matching preference wins
-  // (Hebrew -> /he, Arabic -> /ar, English or anything else -> /en).
-  // Falls back to the links below if JS is off.
-  (function () {
-    var prefs = navigator.languages || [navigator.language || navigator.userLanguage || ""];
-    var target = "en/";
-    for (var i = 0; i < prefs.length; i++) {
-      var code = String(prefs[i]).toLowerCase().split("-")[0];
-      if (code === "he" || code === "iw") { target = "he/"; break; }
-      if (code === "ar") { target = "ar/"; break; }
-      if (code === "en") { target = "en/"; break; }
+<title>Ittay Ophir</title>
+<meta name="description" content="Ittay Ophir — problem-solver, software engineer, and writer.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CjxjaXJjbGUgY3g9IjMyIiBjeT0iMzIiIHI9IjMxIiBmaWxsPSIjZjZmMWU3IiBzdHJva2U9IiMyMDFkMTkiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSIzMiIgeT0iNDIiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCAnTmV3c3JlYWRlcicsIHNlcmlmIiBmb250LXNpemU9IjI2IiBmb250LXdlaWdodD0iNjAwIiBmb250LXN0eWxlPSJpdGFsaWMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMyMDFkMTkiPklPPC90ZXh0Pgo8L3N2Zz4K">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Work+Sans:wght@400;500;600&display=swap');
+
+  :root {
+    --paper: #f6f1e7;
+    --paper-raised: #efe8d9;
+    --ink: #201d19;
+    --ink-soft: #5c564c;
+    --ink-faint: #6c6554;
+    --accent: #a8651f;
+    --accent-ink: #7a4a17;
+    --teal: #2f5f58;
+    --teal-ink: #1e3f3a;
+    --rule: #ddd2bd;
+    --card: #fffdf8;
+    --shadow: rgba(32, 29, 25, 0.08);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #17140f;
+      --paper-raised: #1e1a14;
+      --ink: #ece5d6;
+      --ink-soft: #b5ac9a;
+      --ink-faint: #948a76;
+      --accent: #dd9a4e;
+      --accent-ink: #eeb877;
+      --teal: #6bab9f;
+      --teal-ink: #8fc2b7;
+      --rule: #38321f;
+      --card: #1e1a14;
+      --shadow: rgba(0, 0, 0, 0.35);
     }
-    window.location.replace(target);
-  })();
-</script>
-<noscript><meta http-equiv="refresh" content="0; url=en/"></noscript>
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #17140f;
+    --paper-raised: #1e1a14;
+    --ink: #ece5d6;
+    --ink-soft: #b5ac9a;
+    --ink-faint: #948a76;
+    --accent: #dd9a4e;
+    --accent-ink: #eeb877;
+    --teal: #6bab9f;
+    --teal-ink: #8fc2b7;
+    --rule: #38321f;
+    --card: #1e1a14;
+    --shadow: rgba(0, 0, 0, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .banner-photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1004 / 488;
+    max-height: 440px;
+    object-fit: cover;
+    object-position: center 35%;
+    margin-top: 49px;
+  }
+
+  .site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+  }
+  .site-nav .nav-inner {
+    max-width: 1120px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 13px 24px;
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .site-nav .nav-inner::-webkit-scrollbar { display: none; }
+  .site-nav a {
+    font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.82rem;
+    text-decoration: none;
+    color: var(--ink-soft);
+    flex: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+  }
+  .site-nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .site-nav a.active { color: var(--accent-ink); border-bottom-color: var(--accent-ink); font-weight: 500; }
+  .site-nav a.lang-switch { margin-left: auto; color: var(--ink-faint); }
+
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .eyebrow {
+    font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  a { color: var(--accent-ink); }
+  a:hover { color: var(--accent); }
+
+  /* ---- Hero ---- */
+  header.hero {
+    padding: 88px 0 56px;
+    border-bottom: 1px solid var(--rule);
+  }
+  header.hero .eyebrow { margin-bottom: 18px; }
+  header.hero h1 {
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    font-style: italic;
+    line-height: 1.05;
+    color: var(--ink);
+  }
+  header.hero .role {
+    margin-top: 18px;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+  header.hero .role strong { color: var(--ink); font-weight: 600; }
+
+  section { padding: 64px 0; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: none; }
+  section > .eyebrow { margin-bottom: 10px; }
+  section > h2 {
+    font-size: 1.9rem;
+    margin-bottom: 22px;
+  }
+  section > p.lede {
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: -8px 0 30px;
+  }
+
+  /* ---- About ---- */
+  #about p { max-width: 64ch; margin: 0 0 16px; }
+  #about p:last-child { margin-bottom: 0; }
+
+  /* ---- Books ---- */
+  .books {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 20px;
+  }
+  .book {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 22px 20px;
+    box-shadow: 0 1px 2px var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .book .spine {
+    width: 30px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .book h3 { font-size: 1.15rem; font-style: italic; }
+  .book .byline {
+    font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .book p { font-size: 0.92rem; color: var(--ink-soft); margin: 0; flex-grow: 1; }
+  .book .buy {
+    font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.78rem;
+    text-decoration: none;
+    color: var(--accent-ink);
+    border-bottom: 1px dashed var(--accent);
+    align-self: flex-start;
+  }
+  .book .buy.placeholder { color: var(--ink-faint); border-bottom-color: var(--ink-faint); }
+
+  .book { padding: 0; overflow: hidden; }
+  .book .cover-title { padding: 18px 20px 12px; font-size: 1.05rem; font-style: italic; line-height: 1.3; }
+  .book .cover { width: 100%; display: block; cursor: zoom-in; }
+  .book .buy { margin: 16px 20px 20px; }
+
+  /* ---- Manifesto banner ---- */
+  #manifesto {
+    background: var(--paper-raised);
+    border-radius: 4px;
+    padding: 44px 40px;
+    border-bottom: none;
+    margin: 40px 0;
+  }
+  #manifesto .eyebrow { color: var(--teal-ink); }
+  #manifesto h2 { color: var(--teal-ink); }
+  #manifesto p.lede { color: var(--ink-soft); }
+  #manifesto a.go {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--teal-ink);
+    border: 1px solid var(--teal);
+    padding: 9px 16px;
+    border-radius: 3px;
+  }
+  #manifesto a.go:hover { background: var(--teal); color: var(--paper); }
+
+  /* ---- Writing list ---- */
+  .writing-list { display: flex; flex-direction: column; }
+  .writing-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 16px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .writing-item:last-child { border-bottom: 1px solid var(--rule); }
+  .writing-item .title { font-weight: 500; }
+  .writing-item .tag {
+    font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    white-space: normal;
+    text-align: right;
+    max-width: 46%;
+    padding-top: 2px;
+  }
+
+  /* ---- Social icons ---- */
+  .social-row { display: flex; gap: 14px; padding-top: 6px; }
+  .social-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .social-icon svg { width: 19px; height: 19px; }
+  .social-icon:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--paper);
+  }
+  .social-icon::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    padding: 5px 9px;
+    border-radius: 3px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  .social-icon:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* ---- Flea market ---- */
+  .flea-list p { margin: 0 0 10px; }
+  .flea-list .tag {
+    font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+  .flea-list ul {
+    margin: 0 0 10px;
+    padding-left: 1.3em;
+  }
+  .flea-list li { margin: 4px 0; }
+
+  /* ---- Quotes ---- */
+  .quote {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    color: var(--ink);
+    border-left: 3px solid var(--accent);
+    padding-left: 22px;
+    margin: 0 0 30px;
+  }
+  .quote:last-child { margin-bottom: 0; }
+  .quote .src {
+    display: block;
+    margin-top: 8px;
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+  }
+  .quote .src::before { content: "— "; }
+  .placeholder-note {
+    font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    background: var(--paper-raised);
+    border: 1px dashed var(--rule);
+    padding: 14px 16px;
+    border-radius: 3px;
+  }
+
+  /* ---- Recommended ---- */
+  .rec-list { display: flex; flex-wrap: wrap; gap: 10px; }
+  .rec-list span {
+    font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.8rem;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: var(--ink-soft);
+  }
+
+  footer {
+    padding: 40px 0 80px;
+    font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  @media (max-width: 480px) {
+    header.hero { padding: 60px 0 40px; }
+    #manifesto { padding: 32px 22px; }
+    .writing-item { flex-direction: column; gap: 4px; }
+    .writing-item .tag { text-align: left; max-width: 100%; }
+  }
+</style>
 </head>
 <body>
-  <main class="chooser">
-    <h1>The Liberal Manifesto &nbsp;/&nbsp; המניפסט הליברלי &nbsp;/&nbsp; البيان الليبرالي</h1>
-    <div class="links">
-      <a href="en/">English</a>
-      <a href="he/">עברית</a>
-      <a href="ar/">العربية</a>
+<div id="top"></div>
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="#top">Home</a>
+    <a href="#about">About</a>
+    <a href="#books">Books</a>
+    <a href="#manifesto">The Liberal Manifesto</a>
+    <a href="#writing">Essays &amp; Chapters</a>
+    <a href="#quotes">Quotes</a>
+    <a href="#poem">Poems</a>
+    <a href="#reading">What I've Been Reading</a>
+    <a href="#contact">Get in Touch...</a>
+    <a class="lang-switch" href="he/">עברית</a>
+  </div>
+</nav>
+<img class="banner-photo" src="banner.jpg" alt="Ittay with his dog">
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Ittay Ophir</div>
+    <h1>Problem-solver, by trade and by temperament.</h1>
+    <p class="role">Thirty-five years of writing software — <strong>Scanvec, Retalix/NCR, Microsoft, Tabit</strong> — and, alongside it, books, essays, and satire. This is where I keep it all.</p>
+  </header>
+
+  <section id="about">
+    <div class="eyebrow">About</div>
+    <h2>The short version</h2>
+    <p>I've spent my career solving problems in code — trained early on Visual Basic and Delphi, later mentored directly by Robert "Uncle Bob" Martin in Clean Code and SOLID, and I still think of myself as a problem-solver first and a software engineer second. That habit of mind didn't stay inside the IDE.</p>
+    <p>Outside of work I write — a philosophical memoir under my own name, romance fiction under the pen name <strong>Katie A. Novak</strong>, essays on Medium, and <em>The Liberal Manifesto</em>. This site is the place I've meant to put all of it for a long time. Consider this page one — it's a first draft, built to react to and correct, not a finished monument.</p>
+  </section>
+
+  <section id="books">
+    <div class="eyebrow">Published Books</div>
+    <h2>On the shelf</h2>
+    <div class="books">
+      <div class="book">
+        <h3 class="cover-title">The Adventures of an Unsuspecting Buddha</h3>
+        <a href="covers/adventures-buddha.jpg" target="_blank" rel="noopener" aria-label="Open cover image in new tab"><img class="cover" src="covers/adventures-buddha.jpg" alt="The Adventures of an Unsuspecting Buddha book cover" /></a>
+        <a class="buy" href="https://a.co/d/0b0OC7db" target="_blank" rel="noopener">Read on Amazon &rarr;</a>
+      </div>
+      <div class="book">
+        <h3 class="cover-title">Corporate Crowns</h3>
+        <a href="covers/corporate-crowns.jpg" target="_blank" rel="noopener" aria-label="Open cover image in new tab"><img class="cover" src="covers/corporate-crowns.jpg" alt="Corporate Crowns book cover" /></a>
+        <a class="buy" href="https://a.co/d/0ff0vfkL" target="_blank" rel="noopener">Read on Amazon &rarr;</a>
+      </div>
+      <div class="book">
+        <h3 class="cover-title">I Human</h3>
+        <a href="covers/i-human.jpg" target="_blank" rel="noopener" aria-label="Open cover image in new tab"><img class="cover" src="covers/i-human.jpg" alt="I Human book cover" /></a>
+        <a class="buy" href="https://a.co/d/02p2UAIE" target="_blank" rel="noopener">Read on Amazon &rarr;</a>
+      </div>
     </div>
-  </main>
+  </section>
+
+  <section id="manifesto">
+    <div class="eyebrow">A Declaration</div>
+    <h2>The Liberal Manifesto</h2>
+    <p class="lede">One of the only wholly serious things I've published. Grounded in Popper's paradox of tolerance — "unlimited tolerance must lead to the disappearance of tolerance" — it sets out principles of community over tribalism, commitment to facts, conditional tolerance, good-faith dialogue, and individual freedom with reciprocity. A standalone page, in Hebrew and English.</p>
+    <a class="go" href="https://theliberalmanifesto.co.il/en/" target="_blank" rel="noopener">Read The Liberal Manifesto &rarr;</a>
+  </section>
+
+  <section id="writing">
+    <div class="eyebrow">Essays &amp; Excerpts</div>
+    <h2>Chapters, posts, and Medium pieces</h2>
+    <p class="lede">More is coming, especially Hebrew pieces I can't publish anywhere else.</p>
+    <div class="writing-list">
+      <div class="writing-item">
+        <a class="title" href="https://medium.com/@ittay.ophir" target="_blank" rel="noopener">Essays on Medium</a>
+        <span class="tag">medium.com/@ittay.ophir</span>
+      </div>
+      <div class="writing-item">
+        <a class="title" href="https://medium.com/@ittay.ophir/where-did-the-jews-come-from-aee821bdaa6a" target="_blank" rel="noopener">Where Did the Jews Come From? — <em>I Human</em>, Chapter 24</a>
+        <span class="tag">full chapter</span>
+      </div>
+      <div class="writing-item">
+        <a class="title" href="content/">More chapters &amp; essays</a>
+        <span class="tag">on this site</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="quotes">
+    <div class="eyebrow">In Your Own Words</div>
+    <h2>Quotes</h2>
+    <blockquote class="quote">Truth is stranger than fiction, but it is because Fiction is obliged to stick to possibilities; Truth isn't.<span class="src"><a href="https://en.wikipedia.org/wiki/Mark_Twain" target="_blank" rel="noopener">Mark Twain</a></span></blockquote>
+    <blockquote class="quote">Everything we hear is an opinion, not a fact. Everything we see is a perspective, not the truth.<span class="src"><a href="https://en.wikipedia.org/wiki/Marcus_Aurelius" target="_blank" rel="noopener">Marcus Aurelius</a></span></blockquote>
+    <blockquote class="quote">Be the thermostat, not the thermometer.<span class="src"><a href="https://en.wikipedia.org/wiki/Cornel_West" target="_blank" rel="noopener">Cornel West</a></span></blockquote>
+    <blockquote class="quote">Never argue with stupid people. They will drag you to their level, and beat you with experience.<span class="src"><a href="https://en.wikipedia.org/wiki/Mark_Twain" target="_blank" rel="noopener">Mark Twain</a> (attributed)</span></blockquote>
+    <blockquote class="quote">There are no facts, only interpretations.<span class="src"><a href="https://en.wikipedia.org/wiki/Friedrich_Nietzsche" target="_blank" rel="noopener">Friedrich Nietzsche</a></span></blockquote>
+    <blockquote class="quote">We live in an age when unnecessary things are our only necessities.<span class="src"><a href="https://en.wikipedia.org/wiki/Oscar_Wilde" target="_blank" rel="noopener">Oscar Wilde</a></span></blockquote>
+    <blockquote class="quote">A thing is not necessarily true because a man dies for it.<span class="src"><a href="https://en.wikipedia.org/wiki/Oscar_Wilde" target="_blank" rel="noopener">Oscar Wilde</a></span></blockquote>
+    <blockquote class="quote">Facts do not cease to exist because they are ignored.<span class="src"><a href="https://en.wikipedia.org/wiki/Aldous_Huxley" target="_blank" rel="noopener">Aldous Huxley</a></span></blockquote>
+    <blockquote class="quote">The unexamined life is not worth living.<span class="src"><a href="https://en.wikipedia.org/wiki/Socrates" target="_blank" rel="noopener">Socrates</a></span></blockquote>
+    <blockquote class="quote">The best way to find out if you can trust somebody is to trust them.<span class="src"><a href="https://en.wikipedia.org/wiki/Ernest_Hemingway" target="_blank" rel="noopener">Ernest Hemingway</a> (attributed)</span></blockquote>
+    <blockquote class="quote">There are three types of lies — lies, damn lies, and statistics.<span class="src"><a href="https://en.wikipedia.org/wiki/Benjamin_Disraeli" target="_blank" rel="noopener">Benjamin Disraeli</a></span></blockquote>
+    <blockquote class="quote">If you want to tell people the truth, make them laugh, otherwise they'll kill you.<span class="src"><a href="https://en.wikipedia.org/wiki/George_Bernard_Shaw" target="_blank" rel="noopener">George Bernard Shaw</a></span></blockquote>
+    <blockquote class="quote">You can safely assume you've created God in your own image when it turns out that God hates all the same people you do.<span class="src"><a href="https://en.wikipedia.org/wiki/Anne_Lamott" target="_blank" rel="noopener">Anne Lamott</a></span></blockquote>
+    <blockquote class="quote">Just because you don't understand it doesn't mean it isn't so.<span class="src"><a href="https://en.wikipedia.org/wiki/Lemony_Snicket" target="_blank" rel="noopener">Lemony Snicket</a></span></blockquote>
+    <blockquote class="quote">Malcolm: God creates dinosaurs. God destroys dinosaurs. God creates man. Man destroys God. Man creates dinosaurs.<br>Ellie: Dinosaurs eat man. Woman inherits the earth.<span class="src"><a href="https://en.wikipedia.org/wiki/Jurassic_Park_(film)" target="_blank" rel="noopener">Jurassic Park</a></span></blockquote>
+    <blockquote class="quote">All animals are equal, but some animals are more equal than others.<span class="src">Napoleon, <a href="https://en.wikipedia.org/wiki/Animal_Farm" target="_blank" rel="noopener">Animal Farm</a> (George Orwell)</span></blockquote>
+    <blockquote class="quote">Gradually it has occurred to me what every great philosophy has been so far: namely the self-confession of its author and a kind of involuntary and unnoticed <em>mémoires</em>.<span class="src"><a href="https://a.co/d/0b0OC7db" target="_blank" rel="noopener">Friedrich Nietzsche</a></span></blockquote>
+    <blockquote class="quote">The first thing to do when you encounter a problem, is fix it.<span class="src"><a href="https://ittayophir.com" target="_blank" rel="noopener">Ittay Ophir</a></span></blockquote>
+  </section>
+
+  <section id="poem">
+    <div class="eyebrow">A Favorite</div>
+    <h2>Antigonish</h2>
+    <blockquote class="quote">Yesterday, upon the stair,<br>I met a man who wasn't there<br>He wasn't there again today<br>I wish, I wish he'd go away...<br><br>When I came home last night at three<br>The man was waiting there for me<br>But when I looked around the hall<br>I couldn't see him there at all!<br><br>Go away, go away, don't you come back any more!<br>Go away, go away, and please don't slam the door... (slam!)<br><br>Last night I saw upon the stair<br>A little man who wasn't there<br>He wasn't there again today<br>Oh, how I wish he'd go away...<span class="src"><a href="https://en.wikipedia.org/wiki/Antigonish_(poem)" target="_blank" rel="noopener">Hughes Mearns, "Antigonish" (1939)</a></span></blockquote>
+  </section>
+
+  <section id="reading">
+    <div class="eyebrow">Recommended</div>
+    <h2>Books I've liked</h2>
+    <p class="lede">A running list.</p>
+    <div class="writing-list">
+      <div class="writing-item">
+        <a class="title" href="https://a.co/d/01u77SZB" target="_blank" rel="noopener">Tao Te Ching</a>
+        <span class="tag">Lao Tzu</span>
+      </div>
+      <div class="writing-item">
+        <a class="title" href="https://a.co/d/02PpWRIy" target="_blank" rel="noopener">Guards! Guards!</a>
+        <span class="tag">Terry Pratchett</span>
+      </div>
+      <div class="writing-item">
+        <a class="title" href="https://a.co/d/04gsAvmt" target="_blank" rel="noopener">Thief of Time</a>
+        <span class="tag">Terry Pratchett</span>
+      </div>
+      <div class="writing-item">
+        <a class="title" href="https://a.co/d/0eaKdZMX" target="_blank" rel="noopener">The Wonderful Wizard of Oz</a>
+        <span class="tag">L. Frank Baum</span>
+      </div>
+      <div class="writing-item">
+        <a class="title" href="https://a.co/d/0alj5cK0" target="_blank" rel="noopener">The Unhoneymooners</a>
+        <span class="tag">Christina Lauren</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="fleamarket">
+    <div class="eyebrow">Odds and Ends</div>
+    <h2>Flea Market</h2>
+    <p class="lede">Miscellaneous artifacts reflecting collaboration with other humans.</p>
+    <div class="flea-list">
+      <p><a href="https://canva.link/phxwkxeof6o8ewt" target="_blank" rel="noopener">Barkingham Palace Dog's Catalog</a> <span class="tag">(Hebrew Canva Presentation)</span></p>
+      <p>My YouTube Music Playlists <span class="tag">(Hebrew + English)</span>:</p>
+      <ul>
+        <li><a href="https://music.youtube.com/playlist?list=PLwOIMF3orpDzMAhDa-a4dhKZCceahENJi" target="_blank" rel="noopener">Dog Park Party</a></li>
+        <li><a href="https://music.youtube.com/playlist?list=PLwOIMF3orpDy4jBjGY2tISHKeXq8Mb1Pc" target="_blank" rel="noopener">Chill Too</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="eyebrow">Get in Touch</div>
+    <h2>Say hello</h2>
+    <p class="lede">Pick whichever fits — private, or out in the open.</p>
+    <div class="social-row">
+      <a class="social-icon" href="https://www.facebook.com/Ittay.Ophir" target="_blank" rel="noopener" aria-label="Facebook" data-tooltip="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+      </a>
+      <a class="social-icon" href="https://medium.com/@ittay.ophir/say-hello-acb9f20d6b07" target="_blank" rel="noopener" aria-label="Medium" data-tooltip="Medium">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.51-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.57-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+      </a>
+      <a class="social-icon" href="https://www.linkedin.com/in/ittay-ophir/" target="_blank" rel="noopener" aria-label="LinkedIn" data-tooltip="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667h-3.554V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span>Ittay Ophir — draft v0.1, built to be argued with</span>
+    <span><a href="tools/">Tools</a></span>
+    <span>Givatayim, Israel</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  // Scroll-driven highlighting kept producing edge cases (which section
+  // "wins" depends on scroll direction, section height, and viewport size).
+  // Simpler and reliable: highlight whichever nav link was last clicked,
+  // and default to Home on load.
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.site-nav a'));
+  if (!navLinks.length) return;
+
+  function setActive(id) {
+    navLinks.forEach(function (a) {
+      var linkId = a.getAttribute('href').replace('#', '');
+      a.classList.toggle('active', linkId === id);
+    });
+  }
+
+  navLinks.forEach(function (a) {
+    a.addEventListener('click', function () {
+      setActive(a.getAttribute('href').replace('#', ''));
+    });
+  });
+
+  var initialId = (window.location.hash || '#top').replace('#', '');
+  setActive(initialId);
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Political — Ittay Ophir</title>
+<meta name="description" content="Political reference pages by Ittay Ophir — currently in Hebrew.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Work+Sans:wght@400;500;600&display=swap');
+
+  :root {
+    --paper: #f6f1e7;
+    --paper-raised: #efe8d9;
+    --ink: #201d19;
+    --ink-soft: #5c564c;
+    --ink-faint: #6c6554;
+    --accent: #a8651f;
+    --accent-ink: #7a4a17;
+    --rule: #ddd2bd;
+    --card: #fffdf8;
+    --shadow: rgba(32, 29, 25, 0.08);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #17140f;
+      --paper-raised: #1e1a14;
+      --ink: #ece5d6;
+      --ink-soft: #b5ac9a;
+      --ink-faint: #948a76;
+      --accent: #dd9a4e;
+      --accent-ink: #eeb877;
+      --rule: #38321f;
+      --card: #1e1a14;
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #17140f;
+    --paper-raised: #1e1a14;
+    --ink: #ece5d6;
+    --ink-soft: #b5ac9a;
+    --ink-faint: #948a76;
+    --accent: #dd9a4e;
+    --accent-ink: #eeb877;
+    --rule: #38321f;
+    --card: #1e1a14;
+    --shadow: rgba(0, 0, 0, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .crumbs {
+    padding: 22px 0 0;
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+  }
+  .crumbs a { color: var(--ink-faint); text-decoration: none; border-bottom: 1px solid transparent; }
+  .crumbs a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .crumbs .sep { padding: 0 6px; opacity: 0.6; }
+
+  h1, h2 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .eyebrow {
+    font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  a { color: var(--accent-ink); }
+  a:hover { color: var(--accent); }
+
+  header.hero {
+    padding: 28px 0 44px;
+    border-bottom: 1px solid var(--rule);
+  }
+  header.hero .eyebrow { margin-bottom: 14px; }
+  header.hero h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-style: italic;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  header.hero p {
+    margin-top: 14px;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    max-width: 52ch;
+  }
+
+  .item-list {
+    padding: 40px 0 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .item-card {
+    display: block;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 20px 22px;
+    box-shadow: 0 1px 2px var(--shadow);
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .item-card:hover { border-color: var(--accent); }
+  .item-card h2 { font-size: 1.2rem; font-style: italic; color: var(--ink); }
+  .item-card p {
+    margin: 6px 0 0;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+  .item-card .tag {
+    display: block;
+    margin-top: 8px;
+    font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    color: var(--ink-faint);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="crumbs"><a href="../../">Ittay Ophir</a><span class="sep">/</span><a href="../">Content</a><span class="sep">/</span><span>Political</span></nav>
+  <header class="hero">
+    <div class="eyebrow">Political</div>
+    <h1>Political pages</h1>
+    <p>Reference pages for political activity — currently Hebrew-only, written for specific campaigns and events.</p>
+  </header>
+  <div class="item-list">
+    <a class="item-card" href="democrats-list-26.html">
+      <h2 dir="rtl">רשימת הדמוקרטים לכנסת ה-26</h2>
+      <p>A reference page for campaign-booth volunteers — the Democrats' list for the 26th Knesset.</p>
+      <span class="tag" dir="rtl">עברית · דף ייחוס · אוקטובר 2026</span>
+    </a>
+    <a class="item-card" href="democrats-hamatza.html">
+      <h2 dir="rtl">מה המצע?</h2>
+      <p>A short summary of the Democrats' platform under Yair Golan — 20 topics, 3 points each.</p>
+      <span class="tag" dir="rtl">עברית · דף ייחוס · אוקטובר 2026</span>
+    </a>
+  </div>
+</div>
+</body>
+</html>

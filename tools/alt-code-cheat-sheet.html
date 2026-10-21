@@ -1,0 +1,584 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Alt Code Cheat Sheet</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600;700&display=swap">
+<style>
+/* Layout: one column of keycap grids. Sticky finder bar on top, everyday picks first, the two full code tables after. */
+:root {
+  --bg: #e8ecf1;
+  --surface: #f6f8fb;
+  --key: #ffffff;
+  --key-edge: #bcc6d3;
+  --ink: #162033;
+  --muted: #586579;
+  --win: #1746c9;        /* Alt+0NNN, Windows set */
+  --win-soft: #dde6fb;
+  --dos: #8f4a00;        /* Alt+NNN, DOS set: amber phosphor */
+  --dos-soft: #f6e6cc;
+  --focus: #1746c9;
+  --f-display: "IBM Plex Sans Condensed", "Arial Narrow", "Segoe UI", sans-serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-code: "IBM Plex Mono", "Cascadia Mono", Consolas, "DejaVu Sans Mono", monospace;
+  --f-glyph: "Cascadia Mono", Consolas, "Segoe UI Symbol", "IBM Plex Mono", "DejaVu Sans Mono", "Noto Sans Hebrew", "Noto Sans Symbols 2", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #10151d; --surface: #171e29; --key: #1f2836; --key-edge: #3a475b;
+    --ink: #e6ebf3; --muted: #97a4b8;
+    --win: #93b3ff; --win-soft: #1c2b52;
+    --dos: #f0b455; --dos-soft: #3b2c10;
+    --focus: #93b3ff;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #10151d; --surface: #171e29; --key: #1f2836; --key-edge: #3a475b;
+  --ink: #e6ebf3; --muted: #97a4b8;
+  --win: #93b3ff; --win-soft: #1c2b52;
+  --dos: #f0b455; --dos-soft: #3b2c10;
+  --focus: #93b3ff;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.wrap {
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-inline: 20px;
+  padding-block: 28px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+h1, h2, h3, p { margin: 0; }
+h1 {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: clamp(30px, 5vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+h2 {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+h3 {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.lede { max-width: 62ch; color: var(--muted); }
+kbd {
+  font-family: var(--f-code);
+  font-size: 0.92em;
+  font-weight: 500;
+  background: var(--key);
+  border: 1px solid var(--key-edge);
+  border-bottom-width: 3px;
+  border-radius: 5px;
+  padding: 1px 7px;
+  white-space: nowrap;
+}
+
+/* ---------- breadcrumb ---------- */
+.crumbs {
+  font-family: var(--f-body);
+  font-size: 12.5px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-block: 2px;
+}
+.crumbs a { color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; }
+.crumbs a:hover { color: var(--ink); border-bottom-color: var(--muted); }
+.crumbs .sep { opacity: 0.6; }
+
+/* ---------- header ---------- */
+.head { display: flex; flex-direction: column; gap: 14px; }
+.demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 36px;
+}
+.demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--f-code);
+}
+.demo-row kbd { font-size: 17px; padding: 5px 10px; }
+.demo-row .plus, .demo-row .arrow { color: var(--muted); }
+.demo-row .out { font-family: var(--f-glyph); font-size: 26px; line-height: 1; margin-inline: 4px 8px; }
+.tag {
+  font-family: var(--f-body);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+.tag.win { background: var(--win-soft); color: var(--win); }
+.tag.dos { background: var(--dos-soft); color: var(--dos); }
+.demo-row.win kbd.zero { border-color: var(--win); color: var(--win); }
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px 24px;
+  counter-reset: step;
+}
+.steps li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: baseline;
+  min-width: 0;
+}
+.steps li::before {
+  content: counter(step);
+  font-family: var(--f-code);
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* ---------- finder bar ---------- */
+.bar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  background: var(--bg);
+  border-bottom: 1px solid var(--key-edge);
+  padding-block: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
+}
+.bar input[type="search"] {
+  flex: 1 1 240px;
+  min-width: 0;
+  font: inherit;
+  color: var(--ink);
+  background: var(--key);
+  border: 1px solid var(--key-edge);
+  border-radius: 6px;
+  padding: 9px 12px;
+}
+.bar input[type="search"]::placeholder { color: var(--muted); }
+.lang {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.lang legend { float: left; padding: 0; margin-right: 8px; font-size: 13px; color: var(--muted); }
+.seg { display: inline-flex; border: 1px solid var(--key-edge); border-radius: 6px; overflow: hidden; }
+.seg label { cursor: pointer; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg span { display: block; padding: 7px 14px; font-weight: 500; background: var(--key); color: var(--muted); }
+.seg input:checked + span { background: var(--ink); color: var(--bg); }
+.seg input:focus-visible + span { outline: 2px solid var(--focus); outline-offset: -2px; }
+
+/* ---------- sections ---------- */
+.sec { display: flex; flex-direction: column; gap: 16px; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.sec-head .sub { color: var(--muted); max-width: 70ch; }
+.sec-head h2 .fmt { font-family: var(--f-code); font-weight: 600; font-size: 0.8em; }
+.sec.win .sec-head h2 .fmt { color: var(--win); }
+.sec.dos .sec-head h2 .fmt { color: var(--dos); }
+.group { display: flex; flex-direction: column; gap: 8px; }
+
+.grid { display: grid; gap: 6px; grid-template-columns: repeat(auto-fill, minmax(62px, 1fr)); }
+.picks { display: grid; gap: 6px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+
+.cell, .pick {
+  font: inherit;
+  color: var(--ink);
+  background: var(--key);
+  border: 1px solid var(--key-edge);
+  border-bottom-width: 3px;
+  border-radius: 6px;
+  cursor: pointer;
+  min-width: 0;
+}
+.cell:hover, .pick:hover { border-color: var(--muted); }
+.cell:active, .pick:active { border-bottom-width: 1px; transform: translateY(2px); }
+.cell:focus-visible, .pick:focus-visible, .bar input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 7px 2px 5px;
+}
+.g {
+  font-family: var(--f-glyph);
+  font-variant-emoji: text;
+  font-size: 22px;
+  line-height: 1.25;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.g.word { font-family: var(--f-code); font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; }
+.c { font-family: var(--f-code); font-size: 12.5px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.win .cell .c, .code.win { color: var(--win); }
+.dos .cell .c, .code.dos { color: var(--dos); }
+
+.pick {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 10px;
+  align-items: center;
+  text-align: left;
+  padding: 8px 10px 7px;
+}
+.pick .g { grid-row: 1 / span 2; font-size: 24px; height: 34px; }
+.pick .n { font-size: 13px; line-height: 1.25; overflow-wrap: anywhere; }
+.pick .codes { display: flex; flex-wrap: wrap; gap: 0 10px; }
+.code { font-family: var(--f-code); font-size: 12.5px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.code.other { color: var(--muted); font-family: var(--f-body); font-weight: 400; font-size: 12px; white-space: normal; line-height: 1.25; }
+.pick .g.word { font-size: 11px; }
+.pick.off { background: transparent; border-style: dashed; border-bottom-width: 1px; }
+.pick.off .g, .pick.off .n { color: var(--muted); }
+
+.empty { color: var(--muted); padding-block: 24px; }
+
+/* ---------- notes ---------- */
+.notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 18px 32px; border-top: 1px solid var(--key-edge); padding-top: 24px; }
+.note { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.note p { color: var(--muted); max-width: 60ch; }
+.note p strong { color: var(--ink); font-weight: 600; }
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--bg);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  max-width: calc(100% - 32px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+.toast.on { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .toast { transition: none; } .cell:active, .pick:active { transform: none; } }
+@media (max-width: 480px) {
+  .picks { grid-template-columns: repeat(auto-fill, minmax(136px, 1fr)); }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(54px, 1fr)); }
+}
+</style>
+
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="../">Ittay Ophir</a><span class="sep">/</span><a href="./">Tools</a><span class="sep">/</span><span>Alt Code Cheat Sheet</span>
+  </nav>
+  <header class="head">
+    <h1>Alt Code Cheat Sheet</h1>
+    <p class="lede">Hold <kbd>Alt</kbd>, type the number on the numeric keypad, let go. The leading zero picks which character set Windows reads the number from, so the same character often has two codes.</p>
+    <div class="demo" aria-label="Two ways to type the degree sign">
+      <div class="demo-row win">
+        <kbd>Alt</kbd><span class="plus">+</span><kbd class="zero">0</kbd><kbd>1</kbd><kbd>7</kbd><kbd>6</kbd>
+        <span class="arrow">→</span><span class="out">°</span><span class="tag win">Windows set</span>
+      </div>
+      <div class="demo-row dos">
+        <kbd>Alt</kbd><span class="plus">+</span><kbd>2</kbd><kbd>4</kbd><kbd>8</kbd>
+        <span class="arrow">→</span><span class="out">°</span><span class="tag dos">DOS set</span>
+      </div>
+    </div>
+    <ol class="steps">
+      <li><span>Turn <kbd>Num Lock</kbd> on.</span></li>
+      <li><span>Hold the left <kbd>Alt</kbd> key.</span></li>
+      <li><span>Type the digits on the numeric keypad. The top row does not work.</span></li>
+      <li><span>Release <kbd>Alt</kbd>. The character appears.</span></li>
+    </ol>
+  </header>
+
+  <div class="bar">
+    <input type="search" id="q" autocomplete="off" spellcheck="false" placeholder="Find: é, euro, degree, dash, 0151…" aria-label="Find a character by name, symbol or code">
+    <fieldset class="lang">
+      <legend>Keyboard language when you type the code</legend>
+      <div class="seg">
+        <label><input type="radio" name="lay" id="lay-en" value="en" checked><span>English</span></label>
+        <label><input type="radio" name="lay" id="lay-he" value="he"><span>Hebrew</span></label>
+      </div>
+    </fieldset>
+  </div>
+
+  <section class="sec" id="sec-picks">
+    <div class="sec-head">
+      <h2>Everyday picks</h2>
+      <p class="sub">Click any key to copy the character.</p>
+    </div>
+    <div id="picks" class="sec"></div>
+  </section>
+
+  <section class="sec win" id="sec-win">
+    <div class="sec-head">
+      <h2>Windows set <span class="fmt">Alt + 0NNN</span></h2>
+      <p class="sub" id="win-sub"></p>
+    </div>
+    <div id="win" class="sec"></div>
+  </section>
+
+  <section class="sec dos" id="sec-dos">
+    <div class="sec-head">
+      <h2>DOS set <span class="fmt">Alt + NNN</span></h2>
+      <p class="sub" id="dos-sub"></p>
+    </div>
+    <div id="dos" class="sec"></div>
+  </section>
+
+  <p class="empty" id="empty" hidden>Nothing matches. Try a different word, or switch the keyboard language above.</p>
+
+  <section class="notes" aria-label="Good to know">
+    <div class="note">
+      <h3>The zero changes the answer</h3>
+      <p><strong>Alt + 0176</strong> is ° but <strong>Alt + 176</strong> is ░. Codes 32 to 126 are the plain keyboard characters and come out the same either way.</p>
+    </div>
+    <div class="note">
+      <h3>Wrong character?</h3>
+      <p>Check the language indicator in the taskbar. The code is read from the character set of the keyboard language that is active while you hold Alt, so the same code gives é in English and י in Hebrew.</p>
+    </div>
+    <div class="note">
+      <h3>No numeric keypad</h3>
+      <p>Press <kbd>Win</kbd> + <kbd>.</kbd> for the symbol panel, or run <strong>charmap</strong>. In Word, type the hex code and press <kbd>Alt</kbd> + <kbd>X</kbd>: 2014 becomes an em dash.</p>
+    </div>
+    <div class="note">
+      <h3>Numbers above 255</h3>
+      <p>Most programs wrap them around, so Alt + 257 types the same thing as Alt + 1. Word and WordPad read them as Unicode instead.</p>
+    </div>
+  </section>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const D = {"low":"☺☻♥♦♣♠•◘○◙♂♀♪♫☼►◄↕‼¶§▬↨↑↓→←∟↔▲▼","tabs":{"cp437":["Ç","ü","é","â","ä","à","å","ç","ê","ë","è","ï","î","ì","Ä","Å","É","æ","Æ","ô","ö","ò","û","ù","ÿ","Ö","Ü","¢","£","¥","₧","ƒ","á","í","ó","ú","ñ","Ñ","ª","º","¿","⌐","¬","½","¼","¡","«","»","░","▒","▓","│","┤","╡","╢","╖","╕","╣","║","╗","╝","╜","╛","┐","└","┴","┬","├","─","┼","╞","╟","╚","╔","╩","╦","╠","═","╬","╧","╨","╤","╥","╙","╘","╒","╓","╫","╪","┘","┌","█","▄","▌","▐","▀","α","ß","Γ","π","Σ","σ","µ","τ","Φ","Θ","Ω","δ","∞","φ","ε","∩","≡","±","≥","≤","⌠","⌡","÷","≈","°","∙","·","√","ⁿ","²","■"," "],"cp1252":["€",null,"‚","ƒ","„","…","†","‡","ˆ","‰","Š","‹","Œ",null,"Ž",null,null,"‘","’","“","”","•","–","—","˜","™","š","›","œ",null,"ž","Ÿ"," ","¡","¢","£","¤","¥","¦","§","¨","©","ª","«","¬","­","®","¯","°","±","²","³","´","µ","¶","·","¸","¹","º","»","¼","½","¾","¿","À","Á","Â","Ã","Ä","Å","Æ","Ç","È","É","Ê","Ë","Ì","Í","Î","Ï","Ð","Ñ","Ò","Ó","Ô","Õ","Ö","×","Ø","Ù","Ú","Û","Ü","Ý","Þ","ß","à","á","â","ã","ä","å","æ","ç","è","é","ê","ë","ì","í","î","ï","ð","ñ","ò","ó","ô","õ","ö","÷","ø","ù","ú","û","ü","ý","þ","ÿ"],"cp862":["א","ב","ג","ד","ה","ו","ז","ח","ט","י","ך","כ","ל","ם","מ","ן","נ","ס","ע","ף","פ","ץ","צ","ק","ר","ש","ת","¢","£","¥","₧","ƒ","á","í","ó","ú","ñ","Ñ","ª","º","¿","⌐","¬","½","¼","¡","«","»","░","▒","▓","│","┤","╡","╢","╖","╕","╣","║","╗","╝","╜","╛","┐","└","┴","┬","├","─","┼","╞","╟","╚","╔","╩","╦","╠","═","╬","╧","╨","╤","╥","╙","╘","╒","╓","╫","╪","┘","┌","█","▄","▌","▐","▀","α","ß","Γ","π","Σ","σ","µ","τ","Φ","Θ","Ω","δ","∞","φ","ε","∩","≡","±","≥","≤","⌠","⌡","÷","≈","°","∙","·","√","ⁿ","²","■"," "],"cp1255":["€",null,"‚","ƒ","„","…","†","‡","ˆ","‰",null,"‹",null,null,null,null,null,"‘","’","“","”","•","–","—","˜","™",null,"›",null,null,null,null," ","¡","¢","£","₪","¥","¦","§","¨","©","×","«","¬","­","®","¯","°","±","²","³","´","µ","¶","·","¸","¹","÷","»","¼","½","¾","¿","ְ","ֱ","ֲ","ֳ","ִ","ֵ","ֶ","ַ","ָ","ֹ",null,"ֻ","ּ","ֽ","־","ֿ","׀","ׁ","ׂ","׃","װ","ױ","ײ","׳","״",null,null,null,null,null,null,null,"א","ב","ג","ד","ה","ו","ז","ח","ט","י","ך","כ","ל","ם","מ","ן","נ","ס","ע","ף","פ","ץ","צ","ק","ר","ש","ת",null,null,"‎","‏",null]},"names":{" ":"no-break space","¡":"inverted exclamation mark","¢":"cent sign","£":"pound sign","¤":"currency sign","¥":"yen sign","¦":"broken bar","§":"section sign","¨":"diaeresis","©":"copyright sign","ª":"feminine ordinal indicator","«":"left-pointing double angle quotation mark","¬":"not sign","­":"soft hyphen","®":"registered sign","¯":"macron","°":"degree sign","±":"plus-minus sign","²":"superscript two","³":"superscript three","´":"acute accent","µ":"micro sign","¶":"pilcrow sign","·":"middle dot","¸":"cedilla","¹":"superscript one","º":"masculine ordinal indicator","»":"right-pointing double angle quotation mark","¼":"vulgar fraction one quarter","½":"vulgar fraction one half","¾":"vulgar fraction three quarters","¿":"inverted question mark","À":"latin capital letter a with grave","Á":"latin capital letter a with acute","Â":"latin capital letter a with circumflex","Ã":"latin capital letter a with tilde","Ä":"latin capital letter a with diaeresis","Å":"latin capital letter a with ring above","Æ":"latin capital letter ae","Ç":"latin capital letter c with cedilla","È":"latin capital letter e with grave","É":"latin capital letter e with acute","Ê":"latin capital letter e with circumflex","Ë":"latin capital letter e with diaeresis","Ì":"latin capital letter i with grave","Í":"latin capital letter i with acute","Î":"latin capital letter i with circumflex","Ï":"latin capital letter i with diaeresis","Ð":"latin capital letter eth","Ñ":"latin capital letter n with tilde","Ò":"latin capital letter o with grave","Ó":"latin capital letter o with acute","Ô":"latin capital letter o with circumflex","Õ":"latin capital letter o with tilde","Ö":"latin capital letter o with diaeresis","×":"multiplication sign","Ø":"latin capital letter o with stroke","Ù":"latin capital letter u with grave","Ú":"latin capital letter u with acute","Û":"latin capital letter u with circumflex","Ü":"latin capital letter u with diaeresis","Ý":"latin capital letter y with acute","Þ":"latin capital letter thorn","ß":"latin small letter sharp s","à":"latin small letter a with grave","á":"latin small letter a with acute","â":"latin small letter a with circumflex","ã":"latin small letter a with tilde","ä":"latin small letter a with diaeresis","å":"latin small letter a with ring above","æ":"latin small letter ae","ç":"latin small letter c with cedilla","è":"latin small letter e with grave","é":"latin small letter e with acute","ê":"latin small letter e with circumflex","ë":"latin small letter e with diaeresis","ì":"latin small letter i with grave","í":"latin small letter i with acute","î":"latin small letter i with circumflex","ï":"latin small letter i with diaeresis","ð":"latin small letter eth","ñ":"latin small letter n with tilde","ò":"latin small letter o with grave","ó":"latin small letter o with acute","ô":"latin small letter o with circumflex","õ":"latin small letter o with tilde","ö":"latin small letter o with diaeresis","÷":"division sign","ø":"latin small letter o with stroke","ù":"latin small letter u with grave","ú":"latin small letter u with acute","û":"latin small letter u with circumflex","ü":"latin small letter u with diaeresis","ý":"latin small letter y with acute","þ":"latin small letter thorn","ÿ":"latin small letter y with diaeresis","Œ":"latin capital ligature oe","œ":"latin small ligature oe","Š":"latin capital letter s with caron","š":"latin small letter s with caron","Ÿ":"latin capital letter y with diaeresis","Ž":"latin capital letter z with caron","ž":"latin small letter z with caron","ƒ":"latin small letter f with hook","ˆ":"modifier letter circumflex accent","˜":"small tilde","Γ":"greek capital letter gamma","Θ":"greek capital letter theta","Σ":"greek capital letter sigma","Φ":"greek capital letter phi","Ω":"greek capital letter omega","α":"greek small letter alpha","δ":"greek small letter delta","ε":"greek small letter epsilon","π":"greek small letter pi","σ":"greek small letter sigma","τ":"greek small letter tau","φ":"greek small letter phi","ְ":"hebrew point sheva","ֱ":"hebrew point hataf segol","ֲ":"hebrew point hataf patah","ֳ":"hebrew point hataf qamats","ִ":"hebrew point hiriq","ֵ":"hebrew point tsere","ֶ":"hebrew point segol","ַ":"hebrew point patah","ָ":"hebrew point qamats","ֹ":"hebrew point holam","ֻ":"hebrew point qubuts","ּ":"hebrew point dagesh or mapiq","ֽ":"hebrew point meteg","־":"hebrew punctuation maqaf","ֿ":"hebrew point rafe","׀":"hebrew punctuation paseq","ׁ":"hebrew point shin dot","ׂ":"hebrew point sin dot","׃":"hebrew punctuation sof pasuq","א":"hebrew letter alef","ב":"hebrew letter bet","ג":"hebrew letter gimel","ד":"hebrew letter dalet","ה":"hebrew letter he","ו":"hebrew letter vav","ז":"hebrew letter zayin","ח":"hebrew letter het","ט":"hebrew letter tet","י":"hebrew letter yod","ך":"hebrew letter final kaf","כ":"hebrew letter kaf","ל":"hebrew letter lamed","ם":"hebrew letter final mem","מ":"hebrew letter mem","ן":"hebrew letter final nun","נ":"hebrew letter nun","ס":"hebrew letter samekh","ע":"hebrew letter ayin","ף":"hebrew letter final pe","פ":"hebrew letter pe","ץ":"hebrew letter final tsadi","צ":"hebrew letter tsadi","ק":"hebrew letter qof","ר":"hebrew letter resh","ש":"hebrew letter shin","ת":"hebrew letter tav","װ":"hebrew ligature yiddish double vav","ױ":"hebrew ligature yiddish vav yod","ײ":"hebrew ligature yiddish double yod","׳":"hebrew punctuation geresh","״":"hebrew punctuation gershayim","‎":"left-to-right mark","‏":"right-to-left mark","–":"en dash","—":"em dash","‘":"left single quotation mark","’":"right single quotation mark","‚":"single low-9 quotation mark","“":"left double quotation mark","”":"right double quotation mark","„":"double low-9 quotation mark","†":"dagger","‡":"double dagger","•":"bullet","…":"horizontal ellipsis","‰":"per mille sign","‹":"single left-pointing angle quotation mark","›":"single right-pointing angle quotation mark","‼":"double exclamation mark","ⁿ":"superscript latin small letter n","₧":"peseta sign","₪":"new sheqel sign","€":"euro sign","™":"trade mark sign","←":"leftwards arrow","↑":"upwards arrow","→":"rightwards arrow","↓":"downwards arrow","↔":"left right arrow","↨":"up down arrow with base","∙":"bullet operator","√":"square root","∞":"infinity","∟":"right angle","∩":"intersection","≈":"almost equal to","≡":"identical to","≤":"less-than or equal to","≥":"greater-than or equal to","⌂":"house","⌐":"reversed not sign","⌠":"top half integral","⌡":"bottom half integral","─":"box drawings light horizontal","│":"box drawings light vertical","┌":"box drawings light down and right","┐":"box drawings light down and left","└":"box drawings light up and right","┘":"box drawings light up and left","├":"box drawings light vertical and right","┤":"box drawings light vertical and left","┬":"box drawings light down and horizontal","┴":"box drawings light up and horizontal","┼":"box drawings light vertical and horizontal","═":"box drawings double horizontal","║":"box drawings double vertical","╒":"box drawings down single and right double","╓":"box drawings down double and right single","╔":"box drawings double down and right","╕":"box drawings down single and left double","╖":"box drawings down double and left single","╗":"box drawings double down and left","╘":"box drawings up single and right double","╙":"box drawings up double and right single","╚":"box drawings double up and right","╛":"box drawings up single and left double","╜":"box drawings up double and left single","╝":"box drawings double up and left","╞":"box drawings vertical single and right double","╟":"box drawings vertical double and right single","╠":"box drawings double vertical and right","╡":"box drawings vertical single and left double","╢":"box drawings vertical double and left single","╣":"box drawings double vertical and left","╤":"box drawings down single and horizontal double","╥":"box drawings down double and horizontal single","╦":"box drawings double down and horizontal","╧":"box drawings up single and horizontal double","╨":"box drawings up double and horizontal single","╩":"box drawings double up and horizontal","╪":"box drawings vertical single and horizontal double","╫":"box drawings vertical double and horizontal single","╬":"box drawings double vertical and horizontal","▀":"upper half block","▄":"lower half block","█":"full block","▌":"left half block","▐":"right half block","░":"light shade","▒":"medium shade","▓":"dark shade","■":"black square","▬":"black rectangle","▲":"black up-pointing triangle","►":"black right-pointing pointer","▼":"black down-pointing triangle","◄":"black left-pointing pointer","○":"white circle","◘":"inverse bullet","◙":"inverse white circle","☺":"white smiling face","☻":"black smiling face","☼":"white sun with rays","♀":"female sign","♂":"male sign","♠":"black spade suit","♣":"black club suit","♥":"black heart suit","♦":"black diamond suit","♪":"eighth note","♫":"beamed eighth notes"}};
+
+const ALIAS = {
+  "—": "em dash long dash", "–": "en dash short dash", "…": "ellipsis three dots",
+  "©": "copyright", "®": "registered trademark", "™": "trademark tm",
+  "€": "euro", "£": "pound sterling gbp", "¥": "yen yuan", "¢": "cent", "₪": "shekel sheqel nis israeli",
+  "°": "degree", "±": "plus minus", "×": "times multiply", "÷": "divide division",
+  "½": "half", "¼": "quarter", "¾": "three quarters", "•": "bullet dot", "·": "middle dot interpunct",
+  "§": "section", "¶": "paragraph pilcrow", "«": "guillemet quote", "»": "guillemet quote",
+  "“": "curly smart quote open", "”": "curly smart quote close", "‘": "curly smart quote open", "’": "apostrophe curly smart quote close",
+  "µ": "micro mu", "²": "squared", "³": "cubed", "√": "root", "≈": "approximately about", "π": "pi",
+  "♥": "heart", "☺": "smiley smile", "☻": "smiley smile", "♪": "music note", "♫": "music note",
+  " ": "nbsp non-breaking space", "­": "shy soft hyphen", "ß": "eszett german", "ñ": "enye spanish", "Ñ": "enye spanish",
+  "¿": "spanish question", "¡": "spanish exclamation", "‰": "permille per thousand", "†": "dagger obelisk",
+  "־": "maqaf hebrew hyphen makaf", "׳": "geresh", "״": "gershayim", "‎": "lrm direction bidi", "‏": "rlm direction bidi",
+  "█": "block", "■": "square", "→": "arrow right", "←": "arrow left", "↑": "arrow up", "↓": "arrow down"
+};
+const WORD = { " ": "NBSP", "­": "SHY", "‎": "LRM", "‏": "RLM" };
+const TEXT_STYLE = "☺☻♥♦♣♠♂♀↕↔‼©®™";
+
+const PICKS = [
+  ["Punctuation and quotes", [["—","Em dash"],["–","En dash"],["…","Ellipsis"],["•","Bullet"],["·","Middle dot"],["“","Left double quote"],["”","Right double quote"],["‘","Left single quote"],["’","Apostrophe"],["«","Left guillemet"],["»","Right guillemet"],["§","Section"],["¶","Paragraph"],["†","Dagger"],["¿","Inverted question"],["¡","Inverted exclamation"]]],
+  ["Money and legal marks", [["€","Euro"],["£","Pound"],["¥","Yen"],["¢","Cent"],["₪","Shekel"],["©","Copyright"],["®","Registered"],["™","Trademark"]]],
+  ["Math and units", [["°","Degree"],["±","Plus-minus"],["×","Multiply"],["÷","Divide"],["½","One half"],["¼","One quarter"],["¾","Three quarters"],["²","Squared"],["³","Cubed"],["µ","Micro"],["‰","Per mille"],["≈","Almost equal"],["≤","Less or equal"],["≥","Greater or equal"],["√","Square root"],["∞","Infinity"],["π","Pi"]]],
+  ["Accented letters", [["é","e acute"],["è","e grave"],["ê","e circumflex"],["ë","e diaeresis"],["á","a acute"],["à","a grave"],["â","a circumflex"],["ä","a umlaut"],["å","a ring"],["ç","c cedilla"],["ñ","n tilde"],["í","i acute"],["ó","o acute"],["ö","o umlaut"],["ø","o slash"],["ú","u acute"],["ü","u umlaut"],["ß","Sharp s"],["æ","ae"],["É","E acute"],["Ñ","N tilde"],["Ö","O umlaut"],["Ü","U umlaut"]]],
+  ["Arrows and shapes", [["→","Right arrow"],["←","Left arrow"],["↑","Up arrow"],["↓","Down arrow"],["↔","Left-right arrow"],["►","Right pointer"],["◄","Left pointer"],["▲","Up triangle"],["▼","Down triangle"],["■","Square"],["█","Full block"],["♥","Heart"],["♪","Note"],["☺","Smiley"]]],
+  ["Hebrew extras", [["־","Maqaf"],["׳","Geresh"],["״","Gershayim"],["‎","Left-to-right mark"],["‏","Right-to-left mark"]]]
+];
+
+const GROUPS = {
+  win: {
+    en: [[128,159,"Typographic punctuation"],[160,191,"Symbols and fractions"],[192,255,"Accented letters"]],
+    he: [[128,159,"Typographic punctuation"],[160,191,"Symbols and fractions"],[192,216,"Niqqud and Hebrew punctuation"],[224,254,"Hebrew letters and direction marks"]]
+  },
+  dos: {
+    en: [[1,127,"Symbols"],[128,175,"Accented letters and punctuation"],[176,223,"Box drawing and blocks"],[224,255,"Greek and math"]],
+    he: [[1,127,"Symbols"],[128,154,"Hebrew letters"],[155,175,"Currency, Spanish letters, punctuation"],[176,223,"Box drawing and blocks"],[224,255,"Greek and math"]]
+  }
+};
+const SUBS = {
+  win: { en: "Windows-1252, Western European. Codes 128 to 255.", he: "Windows-1255, Hebrew. Codes 128 to 255." },
+  dos: { en: "Code page 437, the original IBM PC set. Codes 1 to 255.", he: "Code page 862, the Hebrew DOS set. Codes 1 to 255." }
+};
+
+function tables(lay) {
+  const dos = new Map(), win = new Map();
+  [...D.low].forEach((ch, i) => dos.set(i + 1, ch));
+  dos.set(127, "⌂");
+  D.tabs[lay === "he" ? "cp862" : "cp437"].forEach((ch, i) => { if (ch) dos.set(128 + i, ch); });
+  D.tabs[lay === "he" ? "cp1255" : "cp1252"].forEach((ch, i) => { if (ch) win.set(128 + i, ch); });
+  return { dos, win };
+}
+function find(map, ch) { for (const [k, v] of map) if (v === ch) return k; return null; }
+const winCode = n => "0" + String(n).padStart(3, "0");
+const dosCode = n => String(n);
+
+function isMark(ch) {
+  const cp = ch.codePointAt(0);
+  return cp >= 0x05B0 && cp <= 0x05C2 && cp !== 0x05BE && cp !== 0x05C0;
+}
+function glyph(ch) {
+  const s = document.createElement("span");
+  s.className = "g";
+  if (WORD[ch]) { s.textContent = WORD[ch]; s.classList.add("word"); }
+  else if (isMark(ch)) s.textContent = "◌" + ch;
+  else s.textContent = TEXT_STYLE.includes(ch) ? ch + "︎" : ch;
+  return s;
+}
+function nameOf(ch) { return D.names[ch] || ""; }
+function hay(ch, extra) { return [ch, nameOf(ch), ALIAS[ch] || "", extra || ""].join(" ").toLowerCase(); }
+function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+
+function renderTable(root, kind, map, lay) {
+  root.replaceChildren();
+  for (const [lo, hi, label] of GROUPS[kind][lay]) {
+    const g = el("div", "group");
+    g.append(el("h3", "", label));
+    const grid = el("div", "grid");
+    for (let n = lo; n <= hi; n++) {
+      const ch = map.get(n);
+      if (!ch) continue;
+      const code = kind === "win" ? winCode(n) : dosCode(n);
+      const b = el("button", "cell");
+      b.type = "button";
+      b.dataset.ch = ch;
+      b.dataset.hay = hay(ch, code + " " + n);
+      b.title = nameOf(ch) + ", Alt + " + code;
+      b.append(glyph(ch), el("span", "c", code));
+      grid.append(b);
+    }
+    g.append(grid);
+    root.append(g);
+  }
+}
+
+function renderPicks(root, t, other, lay) {
+  root.replaceChildren();
+  for (const [label, items] of PICKS) {
+    const g = el("div", "group");
+    g.append(el("h3", "", label));
+    const grid = el("div", "picks");
+    for (const [ch, name] of items) {
+      const w = find(t.win, ch), d = find(t.dos, ch);
+      const b = el("button", "pick");
+      b.type = "button";
+      b.dataset.ch = ch;
+      const codes = el("span", "codes");
+      let codeText = "";
+      if (w != null) { codes.append(el("span", "code win", winCode(w))); codeText += " " + winCode(w) + " " + w; }
+      if (d != null) { codes.append(el("span", "code dos", dosCode(d))); codeText += " " + d; }
+      if (w == null && d == null) {
+        const there = find(other.win, ch) != null || find(other.dos, ch) != null;
+        if (!there) continue;
+        b.classList.add("off");
+        codes.append(el("span", "code other", (lay === "he" ? "English" : "Hebrew") + " keyboard only"));
+      }
+      b.dataset.hay = hay(ch, name + codeText);
+      b.title = nameOf(ch);
+      b.append(glyph(ch), el("span", "n", name), codes);
+      grid.append(b);
+    }
+    if (grid.querySelector(".pick:not(.off)")) { g.append(grid); root.append(g); }
+  }
+}
+
+const $ = id => document.getElementById(id);
+let lay = "en";
+try { if (localStorage.getItem("altcodes.lay") === "he") lay = "he"; } catch (e) {}
+
+function render() {
+  const t = tables(lay), other = tables(lay === "he" ? "en" : "he");
+  renderPicks($("picks"), t, other, lay);
+  renderTable($("win"), "win", t.win, lay);
+  renderTable($("dos"), "dos", t.dos, lay);
+  $("win-sub").textContent = SUBS.win[lay];
+  $("dos-sub").textContent = SUBS.dos[lay];
+  filter();
+}
+
+function filter() {
+  const q = $("q").value.trim().toLowerCase();
+  const words = q.split(/\s+/).filter(Boolean);
+  let any = false;
+  for (const sec of ["sec-picks", "sec-win", "sec-dos"]) {
+    let secAny = false;
+    for (const g of $(sec).querySelectorAll(".group")) {
+      let gAny = false;
+      for (const b of g.querySelectorAll("button")) {
+        const ok = !words.length || b.dataset.ch.toLowerCase() === q || b.dataset.ch === $("q").value.trim() || words.every(w => b.dataset.hay.includes(w));
+        b.hidden = !ok;
+        if (ok) gAny = true;
+      }
+      g.hidden = !gAny;
+      if (gAny) secAny = true;
+    }
+    $(sec).hidden = !secAny;
+    if (secAny) any = true;
+  }
+  $("empty").hidden = any;
+}
+
+let toastTimer;
+function toast(msg) {
+  const t = $("toast");
+  t.textContent = msg;
+  t.classList.add("on");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove("on"), 1600);
+}
+function label(ch) { return WORD[ch] || (isMark(ch) ? "◌" + ch : ch); }
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("button[data-ch]");
+  if (!b) return;
+  const ch = b.dataset.ch;
+  const fallback = () => {
+    const r = document.createRange();
+    r.selectNodeContents(b.querySelector(".g"));
+    const s = getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    toast("Selected. Press Ctrl+C to copy.");
+  };
+  try {
+    navigator.clipboard.writeText(ch).then(() => toast("Copied " + label(ch)), fallback);
+  } catch (err) { fallback(); }
+});
+$("q").addEventListener("input", filter);
+for (const r of document.querySelectorAll('input[name="lay"]')) {
+  r.checked = r.value === lay;
+  r.addEventListener("change", () => {
+    if (!r.checked) return;
+    lay = r.value;
+    try { localStorage.setItem("altcodes.lay", lay); } catch (e) {}
+    render();
+  });
+}
+render();
+</script>
+
+</body></html>
